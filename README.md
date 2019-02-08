@@ -21,7 +21,7 @@ $docker build -t websocket ./ <br/>
 docker run -tdi --name websock -p 8765:8765 websock <br/>
 
 
-```Argparser and websocker server implemented to give options and listen to changes ``` <br/>
+```Argparser and websocket client implemented to give options and listen to changes ``` <br/>
 $cd client <br/>
 $docker build -t client ./ <br/>
 $docker run -ti client sh <br/>
