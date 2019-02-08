@@ -1,0 +1,5 @@
+Establish the connection only once between pub/sub
+Need not worry bout wss:// for now
+Every PUT/POST should trigger the event or msg publish
+Locking can be avoided for now. No case even though
+No entity should loop, just context switch on interrupts/event
