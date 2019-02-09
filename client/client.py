@@ -34,10 +34,9 @@ def postmeth(key,val):
 
 async def hello(key):
   val1=''
-  while True:
-    async with websockets.connect(
+  async with websockets.connect(
             'ws://10.10.71.11:8765') as websocket:
-
+     while True: 
         await websocket.send(key)
         val = await websocket.recv()
         if val[2:-1] != val1:
