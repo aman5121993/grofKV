@@ -15,8 +15,6 @@ def menu():
  if args.mode == "post":
   postmeth(args.key,args.value)
  if args.mode == "watch":
-  print ("value is")
-  getmeth(args.key)
   asyncio.get_event_loop().run_until_complete(hello(args.key))
  
 
@@ -33,16 +31,13 @@ def postmeth(key,val):
 
 
 async def hello(key):
-  val1=''
   async with websockets.connect(
             'ws://10.10.71.11:8765') as websocket:
-     while True: 
         await websocket.send(key)
-        val = await websocket.recv()
-        if val[2:-1] != val1:
-         print("Value Now Is:" + val[2:-1])
-         val1=val[2:-1]
-
+        while True:
+         val = await websocket.recv()
+         val = val.decode()
+         print ("Value is :  " + val)
 
 
 if __name__ == "__main__":

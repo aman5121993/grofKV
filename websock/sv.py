@@ -7,9 +7,13 @@ port=6379,
 db=0)
 
 async def hello(websocket, path):
+    val1 = ''
     key = await websocket.recv()
-    val = f"{r.get(key)}"
-    await websocket.send(val)
+    while True:
+     val = r.get(key)
+     if val1 != val:
+       await websocket.send(val)
+       val1 = val
 
 start_server = websockets.serve(hello, '0.0.0.0', 8765)
 
