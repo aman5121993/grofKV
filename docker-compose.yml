@@ -1,14 +1,16 @@
 version: '3'
 services:
   server:
+    container_name: flask
     build: ./server
     ports:
      - "5000:5000"
   client:
-    image: clientv2
+    container_name: client
     build: ./client
     command: tail -f /dev/null
   redis:
+    container_name: redis
     image: "redis:alpine"
     ports:
      - "6379:6379"
