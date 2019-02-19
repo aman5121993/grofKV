@@ -17,19 +17,19 @@ def menu():
       watch() 
 
 def getmeth(key):
-   res=requests.get('http://10.10.71.11:5000/getkey/'+key)
+   res=requests.get('http://server:5000/getkey/'+key)
    if res.ok:
       print (res.json())
 
 
 def postmeth(key,val):
    payload = {"key": key,"value":val}
-   r = requests.post('http://10.10.71.11:5000/postkey',json=payload)
+   r = requests.post('http://server:5000/postkey',json=payload)
    print (r.json())
 
 
 def watch():
-   r = redis.StrictRedis(host='10.10.71.11', port=6379)
+   r = redis.StrictRedis(host='redis', port=6379)
    p = r.pubsub()
    p.psubscribe('__keyspace@0__:*')
 
